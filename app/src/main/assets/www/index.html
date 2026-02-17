@@ -737,7 +737,7 @@
                 log('检查运行环境...', 'info', 'page1');
                 
                 const systemInfo = document.getElementById('system-info');
-                const interfaces = ['AndroidFS', 'AndroidPath', 'require'];
+                const interfaces = ['AndroidFS', 'require'];
                 
                 let html = '<div style="font-family: monospace; font-size: 12px;">';
                 
@@ -831,9 +831,7 @@
                 
                 const interfaces = [
                     { name: 'AndroidFS', check: () => typeof AndroidFS !== 'undefined' },
-                    { name: 'AndroidPath', check: () => typeof AndroidPath !== 'undefined' },
-                    { name: 'AndroidFS.readFileSync', check: () => typeof AndroidFS !== 'undefined' && typeof AndroidFS.readFileSync === 'function' },
-                    { name: 'AndroidPath.join', check: () => typeof AndroidPath !== 'undefined' && typeof AndroidPath.join === 'function' }
+                    { name: 'AndroidFS.readFileSync', check: () => typeof AndroidFS !== 'undefined' && typeof AndroidFS.readFileSync === 'function' }
                 ];
                 
                 let allAvailable = true;

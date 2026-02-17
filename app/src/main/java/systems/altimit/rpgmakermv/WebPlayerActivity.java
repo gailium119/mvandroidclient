@@ -67,6 +67,7 @@ public class WebPlayerActivity extends Activity {
     private static final int KEYCODE_SPACE = KeyEvent.KEYCODE_SPACE;
     private static final int KEYCODE_TAB = KeyEvent.KEYCODE_TAB;
     private static final int KEYCODE_ESC = KeyEvent.KEYCODE_ESCAPE;
+    private static final int KEYCODE_SHIFT = KeyEvent.KEYCODE_SHIFT_LEFT;
 
     @SuppressLint("ObsoleteSdkInt")
     @Override
@@ -140,17 +141,25 @@ public class WebPlayerActivity extends Activity {
      * 创建左下角的Tab和Esc按钮
      */
     private void createLeftBottomButtons(int buttonSize, int buttonMargin) {
+        int buttonSpace =  buttonSize + buttonMargin / 2;
+        // 创建Shift按钮
+        TextView shiftButton = createTextButton(buttonSize, "Shift", KEYCODE_SHIFT);
+        FrameLayout.LayoutParams shiftParams = new FrameLayout.LayoutParams(buttonSize, buttonSize);
+        shiftParams.setMargins(buttonMargin, 0, 0, buttonMargin);
+        shiftParams.gravity = Gravity.BOTTOM | Gravity.LEFT;
+        mContainerLayout.addView(shiftButton, shiftParams);
+
         // 创建Tab按钮
         TextView tabButton = createTextButton(buttonSize, "Tab", KEYCODE_TAB);
         FrameLayout.LayoutParams tabParams = new FrameLayout.LayoutParams(buttonSize, buttonSize);
-        tabParams.setMargins(buttonMargin, 0, 0, buttonMargin);
+        tabParams.setMargins(buttonMargin, 0, 0, buttonMargin + buttonSpace);
         tabParams.gravity = Gravity.BOTTOM | Gravity.LEFT;
         mContainerLayout.addView(tabButton, tabParams);
 
         // 创建Esc按钮
         TextView escButton = createTextButton(buttonSize, "Esc", KEYCODE_ESC);
         FrameLayout.LayoutParams escParams = new FrameLayout.LayoutParams(buttonSize, buttonSize);
-        escParams.setMargins(buttonMargin, 0, 0, buttonMargin + buttonSize + buttonMargin/2);
+        escParams.setMargins(buttonMargin, 0, 0, buttonMargin + buttonSpace * 2);
         escParams.gravity = Gravity.BOTTOM | Gravity.LEFT;
         mContainerLayout.addView(escButton, escParams);
     }

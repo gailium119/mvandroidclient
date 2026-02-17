@@ -71,6 +71,10 @@ public class WebPlayerView extends WebView {
     private void init(Context context) {
         mPlayer = new WebPlayer(this);
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            WebView.setWebContentsDebuggingEnabled(true);
+            setWebContentsDebuggingEnabled(true);
+        }
         setBackgroundColor(Color.BLACK);
 
         enableJavascript();
